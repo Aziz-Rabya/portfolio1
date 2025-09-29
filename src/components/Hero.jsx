@@ -1,24 +1,18 @@
-import GradientBlinds from "./GradientBlinds";
+import Galaxy from "./Galaxy";
 import Nav from "./Nav";
 
 const Hero = () => {
   return (
     <div className="w-full h-screen relative top-0 left-0 overflow-hidden">
       {/* Gradient Background - fills entire screen */}
-      <div className="relative w-full h-screen">
-        <GradientBlinds
-          gradientColors={["#FF9FFC", "#5227FF"]}
-          angle={10}
-          noise={0.5}
-          blindCount={17}
-          blindMinWidth={50}
-          spotlightRadius={0.5}
-          spotlightSoftness={1}
-          spotlightOpacity={1}
-          mouseDampening={0.15}
-          distortAmount={0}
-          shineDirection="left"
-          mixBlendMode="lighten"
+      <div style={{ width: "100%", height: "100Vh", position: "relative" }}>
+        <Galaxy
+          mouseRepulsion={true}
+          mouseInteraction={true}
+          density={1.5}
+          glowIntensity={0.5}
+          saturation={0.8}
+          hueShift={240}
         />
       </div>
 
@@ -31,8 +25,12 @@ const Hero = () => {
           Hi, I’m Aziz — a junior front-end developer passionate about building
           smooth, responsive, and user-friendly websites.
         </p>
-        <button className="bg-white m-4 py-2 px-4 mt-5 text-violet-700 font-semibold rounded-full ">Projects</button>
-        <button className="bg-white m-4 py-2 px-4 mt-4 text-violet-700 font-semibold rounded-full ">Contact</button>
+        <button className="bg-white m-4 py-2 px-4 mt-5 text-violet-700 font-semibold rounded-full ">
+          Projects
+        </button>
+        <button className="bg-white m-4 py-2 px-4 mt-4 text-violet-700 font-semibold rounded-full ">
+          Contact
+        </button>
       </div>
 
       {/* Navigation - positioned on top of everything */}
