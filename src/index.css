@@ -1,6 +1,12 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Aguafina+Script&family=Dancing+Script:wght@400..700&display=swap');
 
 
 body {
     background-color: black;
+}
+.aguafina-script-regular {
+  font-family: "Aguafina Script", cursive;
+  font-weight: 400;
+  font-style: normal;
 }

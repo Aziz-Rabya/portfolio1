@@ -8,11 +8,11 @@ const Hero = () => {
       <div style={{ width: "100%", height: "100Vh", position: "relative" }}>
         <Galaxy
           mouseRepulsion={true}
-          mouseInteraction={true}
+          mouseInteraction={false}
           density={1.5}
-          glowIntensity={0.5}
-          saturation={0.8}
-          hueShift={240}
+          glowIntensity={0.3}
+          saturation={0}
+          hueShift={0}
         />
       </div>
 
