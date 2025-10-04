@@ -1,5 +1,6 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Aguafina+Script&family=Dancing+Script:wght@400..700&display=swap');
+@import "tailwindcss";
+
 
 
 body {
@@ -10,3 +11,26 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+/* Add these Tailwind-like utilities if needed */
+.relative { position: relative; }
+.overflow-x-hidden { overflow-x: hidden; }
+.flex { display: flex; }
+.flex-none { flex: none; }
+.items-center { align-items: center; }
+.w-max { width: max-content; }
+.w-full { width: 100%; }
+.h-auto { height: auto; }
+.object-contain { object-fit: contain; }
+.pointer-events-none { pointer-events: none; }
+.select-none { user-select: none; }
+.inline-flex { display: inline-flex; }
+.no-underline { text-decoration: none; }
+.rounded { border-radius: 0.25rem; }
+.absolute { position: absolute; }
+.inset-y-0 { top: 0; bottom: 0; }
+.left-0 { left: 0; }
+.right-0 { right: 0; }
+.z-10 { z-index: 10; }
+.group { position: relative; }
+.mr-8 { margin-right: 2rem; }
+.w-24 { width: 6rem; }
