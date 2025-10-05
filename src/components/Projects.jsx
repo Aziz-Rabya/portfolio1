@@ -3,10 +3,10 @@ import { ProjectsList } from "../../constants";
 
 const Projects = () => {
   return (
-    <section className="flex flex-col gap-10 m-4 p-3">
+    <section className="flex flex-col gap-10 m-4 p-3 mb-20">
       <div>
-        <h4 className="text-gray-400">Introduction</h4>
-        <h1 className="text-white text-5xl font-extrabold">OVERVIEW.</h1>
+        <h4 className="text-gray-400">Featured</h4>
+        <h1 className="text-white text-5xl font-extrabold">PROJECTS.</h1>
       </div>
       
       {/* Project Cards Grid */}
@@ -34,7 +34,7 @@ const Projects = () => {
                 </div>
                 
                 {/* Project Title */}
-                <h3 className="text-white text-xl font-bold mb-2 transition-all duration-300 group-hover:text-blue-400">
+                <h3 className="text-white text-xl font-bold mb-2 transition-all duration-300 ">
                   {project.title}
                 </h3>
                 
@@ -48,7 +48,7 @@ const Projects = () => {
                   {project.tags.map((tag, tagIndex) => (
                     <span 
                       key={tagIndex}
-                      className="px-3 py-1 bg-blue-600 text-white text-sm rounded-full transition-all duration-300 group-hover:bg-blue-500 group-hover:scale-105"
+                      className="px-3 py-1 bg-gray-600 text-white text-sm rounded-full transition-all duration-300 group-hover:scale-105"
                     >
                       {tag}
                     </span>
@@ -60,7 +60,7 @@ const Projects = () => {
                   {project.source_code_link && (
                     <a 
                       href={project.source_code_link}
-                      className="flex items-center justify-center gap-2 flex-1 bg-blue-600 hover:bg-blue-500 text-white py-2 px-4 rounded-lg transition-all duration-300 font-medium transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25"
+                      className="flex items-center justify-center gap-2 flex-1 bg-transparent border-1 border-white hover:bg-transparent text-white py-2 px-4 rounded-lg transition-all duration-300 font-medium transform hover:scale-105 hover:shadow-lg hover:shadow-gray-500/25"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -70,7 +70,7 @@ const Projects = () => {
                   {project.demo_link && (
                     <a 
                       href={project.demo_link}
-                      className="flex items-center justify-center gap-2 flex-1 bg-green-600 hover:bg-green-500 text-white py-2 px-4 rounded-lg transition-all duration-300 font-medium transform hover:scale-105 hover:shadow-lg hover:shadow-green-500/25"
+                      className="flex items-center justify-center gap-2 flex-1 bg-transparent border-1 border-white hover:bg-transparent text-white py-2 px-4 rounded-lg transition-all duration-300 font-medium transform hover:scale-105 hover:shadow-lg hover:shadow-gray-500/25"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
