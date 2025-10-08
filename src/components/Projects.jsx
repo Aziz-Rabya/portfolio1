@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import ElectricBorder from "./ElectricBorder";
 import { ProjectsList } from "../../constants";
 import { useRef, useEffect, useState, useCallback } from 'react';
@@ -31,7 +32,8 @@ const ParticleCard = ({
   disableAnimations = false,
   particleCount = DEFAULT_PARTICLE_COUNT,
   glowColor = DEFAULT_GLOW_COLOR,
-  clickEffect = false
+  clickEffect = false,
+  index = 0
 }) => {
   const cardRef = useRef(null);
   const particlesRef = useRef([]);
@@ -182,12 +184,24 @@ const ParticleCard = ({
   }, [animateParticles, clearAllParticles, disableAnimations, clickEffect, glowColor]);
 
   return (
-    <div
+    <motion.div
       ref={cardRef}
       className={`${className} project-card relative overflow-hidden transform-gpu hover:scale-105 transition-transform duration-300`}
+      initial={{ opacity: 0, y: 50, scale: 0.8 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{
+        duration: 0.6,
+        ease: "easeOut",
+        delay: index * 0.1
+      }}
+      whileHover={{
+        y: -10,
+        transition: { duration: 0.3 }
+      }}
     >
       {children}
-    </div>
+    </motion.div>
   );
 };
 
@@ -208,14 +222,70 @@ const Projects = () => {
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = isMobile;
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const titleVariants = {
+    hidden: { x: -50, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.7,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
-    <section className="flex flex-col gap-10 m-4 p-3 mb-20">
-      <div>
-        <h4 className="text-gray-400">Featured</h4>
-        <h1 className="text-white text-5xl font-extrabold">PROJECTS.</h1>
-      </div>
+    <motion.section 
+      className="flex flex-col gap-10 m-4 p-3 mb-20"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+      variants={containerVariants}
+      id="projects"
+    >
+      <motion.div variants={itemVariants}>
+        <motion.h4 
+          className="text-gray-400"
+          variants={titleVariants}
+        >
+          Featured
+        </motion.h4>
+        <motion.h1 
+          className="text-white text-5xl font-extrabold"
+          variants={titleVariants}
+        >
+          PROJECTS.
+        </motion.h1>
+      </motion.div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <motion.div 
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        variants={containerVariants}
+      >
         {ProjectsList.map((project, index) => (
           <ParticleCard
             key={index}
@@ -224,6 +294,7 @@ const Projects = () => {
             clickEffect={true}
             particleCount={20}
             glowColor={DEFAULT_GLOW_COLOR}
+            index={index}
           >
             <ElectricBorder
               color="#9fa7aa"
@@ -232,66 +303,105 @@ const Projects = () => {
               thickness={2}
               className="w-full h-full"
             >
-              <div className="p-6 bg-transparent rounded-lg h-full flex flex-col">
+              <motion.div 
+                className="p-6 bg-transparent rounded-lg h-full flex flex-col"
+                whileHover={{ 
+                  scale: 1.02,
+                  transition: { duration: 0.3 }
+                }}
+              >
                 {/* Project Image */}
-                <div className="mb-5 overflow-hidden rounded-lg">
+                <motion.div 
+                  className="mb-5 overflow-hidden rounded-lg"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.4 }}
+                >
                   <img 
                     src={project.image1} 
                     alt={project.title}
                     className="w-full h-48 object-cover rounded-lg transition-transform duration-500 group-hover:scale-110"
                   />
-                </div>
+                </motion.div>
                 
                 {/* Project Title */}
-                <h3 className="text-white text-xl font-bold mb-2 group-hover:text-gray-200 transition-colors">
+                <motion.h3 
+                  className="text-white text-xl font-bold mb-2 group-hover:text-gray-200 transition-colors"
+                  whileHover={{ x: 5 }}
+                  transition={{ duration: 0.2 }}
+                >
                   {project.title}
-                </h3>
+                </motion.h3>
                 
                 {/* Project Description */}
-                <p className="text-gray-300 mb-4 flex-grow group-hover:text-white transition-colors">
+                <motion.p 
+                  className="text-gray-300 mb-4 flex-grow group-hover:text-white transition-colors"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
                   {project.description}
-                </p>
+                </motion.p>
                 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-4">
+                <motion.div 
+                  className="flex flex-wrap gap-2 mb-4"
+                  variants={containerVariants}
+                >
                   {project.tags.map((tag, tagIndex) => (
-                    <span 
+                    <motion.span 
                       key={tagIndex}
                       className="px-3 py-1 bg-gray-600 text-white text-sm rounded-full group-hover:bg-gray-500 transition-colors"
+                      whileHover={{ 
+                        scale: 1.1,
+                        backgroundColor: "#4B5563"
+                      }}
+                      transition={{ duration: 0.2 }}
                     >
                       {tag}
-                    </span>
+                    </motion.span>
                   ))}
-                </div>
+                </motion.div>
                 
                 {/* Links */}
-                <div className="flex gap-3 mt-auto">
+                <motion.div 
+                  className="flex gap-3 mt-auto"
+                  variants={containerVariants}
+                >
                   {project.source_code_link && (
-                    <a 
+                    <motion.a 
                       href={project.source_code_link}
                       className="flex items-center justify-center gap-2 flex-1 bg-transparent border border-white hover:bg-white/10 text-white py-2 px-4 rounded-lg transition-all duration-300 font-medium"
                       target="_blank"
                       rel="noopener noreferrer"
+                      whileHover={{ 
+                        scale: 1.05,
+                        backgroundColor: "rgba(255, 255, 255, 0.1)"
+                      }}
+                      whileTap={{ scale: 0.95 }}
                     >
                       <span>Code</span>
-                    </a>
+                    </motion.a>
                   )}
                   {project.demo_link && (
-                    <a 
+                    <motion.a 
                       href={project.demo_link}
                       className="flex items-center justify-center gap-2 flex-1 bg-transparent border border-white hover:bg-white/10 text-white py-2 px-4 rounded-lg transition-all duration-300 font-medium"
                       target="_blank"
                       rel="noopener noreferrer"
+                      whileHover={{ 
+                        scale: 1.05,
+                        backgroundColor: "rgba(255, 255, 255, 0.1)"
+                      }}
+                      whileTap={{ scale: 0.95 }}
                     >
                       <span>Demo</span>
-                    </a>
+                    </motion.a>
                   )}
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             </ElectricBorder>
           </ParticleCard>
         ))}
-      </div>
+      </motion.div>
 
       <style>
         {`
@@ -323,7 +433,7 @@ const Projects = () => {
           }
         `}
       </style>
-    </section>
+    </motion.section>
   );
 };
 
