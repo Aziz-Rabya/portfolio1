@@ -1,56 +1,47 @@
-import React from "react";
-import Particles from "./Particles"
 
 const Contact = () => {
   return (
-    <section style={{ position: "relative", minHeight: "100vh", marginTop: "2rem" }}>
-      {/* Particle Background */}
-      <div style={{ 
-        width: "100%", 
-        height: "100%", 
-        position: "absolute", 
-        top: 0, 
-        left: 0,
-        zIndex: 1
-      }}>
-        <Particles
-          particleColors={["#ffffff", "#ffffff"]}
-          particleCount={2000}
-          particleSpread={10}
-          speed={0.1}
-          particleBaseSize={100}
-          moveParticlesOnHover={true}
-          alphaParticles={false}
-          disableRotation={false}
-        />
-      </div>
-      
+    <section
+      style={{ position: "relative", minHeight: "100vh" }}
+      className="flex mt-25"
+    >
       {/* Content Container - Centered */}
-      <div style={{
-        position: "relative",
-        zIndex: 2,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        minHeight: "100vh",
-        padding: "2rem"
-      }}>
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 2,
+          width: "100%",
+          maxWidth: "1200px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "2rem",
+        }}
+      >
         {/* Header Section - Centered */}
-        <div className="text-center mb-12 max-w-2xl">
-          <h4 className="text-gray-400 text-lg font-medium mb-2">Get In Touch</h4>
-          <h1 className="text-white text-5xl font-extrabold mb-6">CONTACT.</h1>
+        <div className="text-center mb-12 max-w-2xl mx-auto">
+          <h4 className="text-gray-400 text-lg font-medium mb-4">
+            Get In Touch
+          </h4>
+          <h1 className="text-white text-5xl font-extrabold mb-8">CONTACT.</h1>
         </div>
 
-        {/* Form Container - Centered */}
-        <form className="max-w-2xl w-full bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 shadow-2xl">
+        {/* Form Container - Centered with consistent spacing */}
+        <form className="max-w-2xl w-full bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 shadow-2xl mx-auto">
           {/* Name Field */}
           <div className="mb-8">
-            <label className="block mb-4 font-medium text-white text-lg text-center" htmlFor="name">
+            <label
+              className="block mb-4 font-medium text-white text-lg text-center"
+              htmlFor="name"
+            >
               Your Name
             </label>
             <input
-              className="w-full bg-white/5 border border-white/20 text-white placeholder-gray-400 rounded-lg py-4 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 text-lg"
+              className="w-full bg-white/5 border border-white/20 text-white placeholder-gray-400 rounded-lg py-4 px-6 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 text-lg"
               type="text"
               name="Name"
               id="name"
@@ -58,7 +49,7 @@ const Contact = () => {
               required
             />
           </div>
-          
+
           {/* Email Field */}
           <div className="mb-8">
             <label
@@ -68,7 +59,7 @@ const Contact = () => {
               Your Email
             </label>
             <input
-              className="w-full bg-white/5 border border-white/20 text-white placeholder-gray-400 rounded-lg py-4 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 text-lg"
+              className="w-full bg-white/5 border border-white/20 text-white placeholder-gray-400 rounded-lg py-4 px-6 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 text-lg"
               type="email"
               name="Email"
               id="email"
@@ -77,7 +68,7 @@ const Contact = () => {
             />
           </div>
 
-          {/* Message Field - Made taller */}
+          {/* Message Field */}
           <div className="mb-10">
             <label
               className="block mb-4 font-medium text-white text-lg text-center"
@@ -86,7 +77,7 @@ const Contact = () => {
               Your Message
             </label>
             <textarea
-              className="w-full bg-white/5 border border-white/20 text-white placeholder-gray-400 rounded-lg py-4 px-4 h-52 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 text-lg"
+              className="w-full bg-white/5 border border-white/20 text-white placeholder-gray-400 rounded-lg py-4 px-6 h-52 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 text-lg"
               name="Message"
               id="message"
               placeholder="Tell me about your project, timeline, and any specific requirements..."
