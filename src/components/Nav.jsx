@@ -17,9 +17,9 @@ const Nav = () => {
       transition: {
         duration: 0.8,
         ease: "easeOut",
-        delay: 0.2
-      }
-    }
+        delay: 0.2,
+      },
+    },
   };
 
   // Scroll hide/show variants
@@ -29,17 +29,17 @@ const Nav = () => {
       opacity: 1,
       transition: {
         duration: 0.3,
-        ease: "easeOut"
-      }
+        ease: "easeOut",
+      },
     },
     hidden: {
       y: -100,
       opacity: 0,
       transition: {
         duration: 0.3,
-        ease: "easeIn"
-      }
-    }
+        ease: "easeIn",
+      },
+    },
   };
 
   const logoVariants = {
@@ -52,16 +52,16 @@ const Nav = () => {
         stiffness: 200,
         damping: 15,
         duration: 0.8,
-        delay: 0.4
-      }
+        delay: 0.4,
+      },
     },
     hover: {
       scale: 1.1,
       rotate: 5,
       transition: {
-        duration: 0.3
-      }
-    }
+        duration: 0.3,
+      },
+    },
   };
 
   const linkContainerVariants = {
@@ -70,9 +70,9 @@ const Nav = () => {
       opacity: 1,
       transition: {
         delayChildren: 0.6,
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const linkItemVariants = {
@@ -82,16 +82,16 @@ const Nav = () => {
       opacity: 1,
       transition: {
         duration: 0.5,
-        ease: "easeOut"
-      }
+        ease: "easeOut",
+      },
     },
     hover: {
       y: -2,
       color: "#d1d5db",
       transition: {
-        duration: 0.2
-      }
-    }
+        duration: 0.2,
+      },
+    },
   };
 
   const buttonVariants = {
@@ -104,20 +104,20 @@ const Nav = () => {
         stiffness: 300,
         damping: 20,
         duration: 0.6,
-        delay: 1
-      }
+        delay: 1,
+      },
     },
     hover: {
       scale: 1.05,
       backgroundColor: "#f8fafc",
       boxShadow: "0 4px 12px rgba(255, 255, 255, 0.2)",
       transition: {
-        duration: 0.3
-      }
+        duration: 0.3,
+      },
     },
     tap: {
-      scale: 0.95
-    }
+      scale: 0.95,
+    },
   };
 
   // Handle scroll behavior
@@ -192,11 +192,7 @@ const Nav = () => {
         animate={hasAnimatedIn ? "visible" : "visible"}
         whileHover="hover"
       >
-        <img
-          src="/Logo.png"
-          alt="logo"
-          className="w-12 h-auto"
-        />
+        <img src="/Logo.png" alt="logo" className="w-12 h-auto" />
       </motion.div>
 
       {/* Navigation Links - Only animate on initial load */}
@@ -223,18 +219,6 @@ const Nav = () => {
           </motion.li>
         ))}
       </motion.ul>
-
-      {/* Contact Button - Only animate on initial load */}
-      <motion.button
-        className="bg-white px-6 py-3 text-black rounded-full font-medium"
-        variants={buttonVariants}
-        initial="hidden"
-        animate={hasAnimatedIn ? "visible" : "visible"}
-        whileHover="hover"
-        whileTap="tap"
-      >
-        contact me
-      </motion.button>
     </motion.nav>
   );
 };

@@ -1,243 +1,133 @@
+"use client";
+import React, { useEffect, useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 import { motion } from "framer-motion";
+import { ToastContainer, toast } from "react-toastify";
 
 const Contact = () => {
-  // Animation variants
+  const [state, handleSubmit] = useForm("xwprroop");
+  const [formKey, setFormKey] = useState(0);
+
+  useEffect(() => {
+    if (state.succeeded) {
+      toast.success("Message sent successfully!");
+      setTimeout(() => window.location.reload(), 2000);
+    } else if (state.errors && state.errors.length > 0) {
+      toast.error("Failed to send message. Please try again.");
+    }
+  }, [state.succeeded, state.errors]);
+
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
-    }
+      y: 0,
+      transition: { duration: 0.6, staggerChildren: 0.2 },
+    },
   };
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const titleVariants = {
-    hidden: { y: -20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.7,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const formVariants = {
-    hidden: { scale: 0.9, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut",
-        delay: 0.5
-      }
-    }
-  };
-
-  const inputVariants = {
-    focus: {
-      scale: 1.02,
-      borderColor: "rgba(59, 130, 246, 0.5)",
-      boxShadow: "0 0 0 3px rgba(59, 130, 246, 0.1)",
-      transition: {
-        duration: 0.2
-      }
-    },
-    tap: {
-      scale: 0.995
-    }
-  };
-
-  const buttonVariants = {
-    hidden: { scale: 0, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 20,
-        duration: 0.6,
-        delay: 0.8
-      }
-    },
-    hover: {
-      scale: 1.05,
-      backgroundColor: "rgba(255, 255, 255, 0.2)",
-      boxShadow: "0 10px 25px rgba(255, 255, 255, 0.1)",
-      transition: {
-        duration: 0.3
-      }
-    },
-    tap: {
-      scale: 0.95
-    }
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
   };
 
   return (
-    <motion.section
-      style={{ position: "relative", minHeight: "100vh" }}
-      className="flex mt-25"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
-      variants={containerVariants}
+    <section
       id="contact"
+      className="min-h-screen flex items-center justify-center 
+      bg-[#0a0a0a] text-white py-20 px-6"
     >
-      {/* Content Container - Centered */}
-      <div
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          zIndex: 2,
-          width: "100%",
-          maxWidth: "1200px",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: "2rem",
-        }}
+      <motion.div
+        className="max-w-xl w-full text-center bg-[#0f0f0f]/70 backdrop-blur-md 
+        rounded-3xl p-10 border border-[#1a1a1a] shadow-[0_0_25px_rgba(255,255,255,0.05)]"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
       >
-        {/* Header Section - Centered */}
-        <motion.div 
-          className="text-center mb-12 max-w-2xl mx-auto"
+        <motion.h2
+          className="text-4xl md:text-5xl font-bold mb-4 text-white tracking-tight"
           variants={itemVariants}
         >
-          <motion.h4 
-            className="text-gray-400 text-lg font-medium mb-4"
-            variants={titleVariants}
-          >
-            Get In Touch
-          </motion.h4>
-          <motion.h1 
-            className="text-white text-5xl font-extrabold mb-8"
-            variants={titleVariants}
-          >
-            CONTACT.
-          </motion.h1>
-        </motion.div>
+          Get in Touch
+        </motion.h2>
 
-        {/* Form Container - Centered with consistent spacing */}
-        <motion.form 
-          className="max-w-2xl w-full bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 shadow-2xl mx-auto"
-          variants={formVariants}
-          whileInView="visible"
-          viewport={{ once: true }}
+        <motion.p
+          className="text-gray-400 mb-10 leading-relaxed"
+          variants={itemVariants}
         >
-          {/* Name Field */}
-          <motion.div 
-            className="mb-8"
-            variants={itemVariants}
-          >
-            <motion.label
-              className="block mb-4 font-medium text-white text-lg text-center"
-              htmlFor="name"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
-            >
-              Your Name
-            </motion.label>
-            <motion.input
-              className="w-full bg-white/5 border border-white/20 text-white placeholder-gray-400 rounded-lg py-4 px-6 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 text-lg"
+          Feel free to reach out for collaborations, projects, or just to say hi 👋
+        </motion.p>
+
+        <motion.form
+          key={formKey}
+          id="contact-form"
+          onSubmit={handleSubmit}
+          className="space-y-6"
+          variants={containerVariants}
+        >
+          <motion.div variants={itemVariants}>
+            <input
               type="text"
-              name="Name"
-              id="name"
-              placeholder="Enter your full name"
+              name="name"
+              placeholder="Your Name"
               required
-              variants={inputVariants}
-              whileFocus="focus"
-              whileTap="tap"
+              className="w-full p-4 rounded-xl bg-[#121212] text-white 
+              border border-[#222] focus:border-gray-400 outline-none 
+              transition-all duration-300 focus:shadow-[0_0_10px_rgba(255,255,255,0.1)]"
             />
           </motion.div>
 
-          {/* Email Field */}
-          <motion.div 
-            className="mb-8"
-            variants={itemVariants}
-          >
-            <motion.label
-              className="block mb-4 font-medium text-white text-lg text-center"
-              htmlFor="email"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
-            >
-              Your Email
-            </motion.label>
-            <motion.input
-              className="w-full bg-white/5 border border-white/20 text-white placeholder-gray-400 rounded-lg py-4 px-6 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 text-lg"
+          <motion.div variants={itemVariants}>
+            <input
               type="email"
-              name="Email"
-              id="email"
-              placeholder="your.email@example.com"
+              name="email"
+              placeholder="Your Email"
               required
-              variants={inputVariants}
-              whileFocus="focus"
-              whileTap="tap"
+              className="w-full p-4 rounded-xl bg-[#121212] text-white 
+              border border-[#222] focus:border-gray-400 outline-none 
+              transition-all duration-300 focus:shadow-[0_0_10px_rgba(255,255,255,0.1)]"
             />
+            <ValidationError prefix="Email" field="email" errors={state.errors} />
           </motion.div>
 
-          {/* Message Field */}
-          <motion.div 
-            className="mb-10"
-            variants={itemVariants}
-          >
-            <motion.label
-              className="block mb-4 font-medium text-white text-lg text-center"
-              htmlFor="message"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
-            >
-              Your Message
-            </motion.label>
-            <motion.textarea
-              className="w-full bg-white/5 border border-white/20 text-white placeholder-gray-400 rounded-lg py-4 px-6 h-52 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 text-lg"
-              name="Message"
-              id="message"
-              placeholder="Tell me about your project, timeline, and any specific requirements..."
+          <motion.div variants={itemVariants}>
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              rows="5"
               required
-              variants={inputVariants}
-              whileFocus="focus"
-              whileTap="tap"
-            ></motion.textarea>
+              className="w-full p-4 rounded-xl bg-[#121212] text-white 
+              border border-[#222] focus:border-gray-400 outline-none 
+              resize-none transition-all duration-300 focus:shadow-[0_0_10px_rgba(255,255,255,0.1)]"
+            />
+            <ValidationError prefix="Message" field="message" errors={state.errors} />
           </motion.div>
 
-          {/* Submit Button - Centered */}
-          <motion.div 
-            className="flex justify-center"
+          <motion.button
+            type="submit"
+            disabled={state.submitting}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+            className="w-full py-4 rounded-xl bg-transparent border border-gray-500 
+            hover:bg-gray-500/20 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] 
+            transition-all duration-300 font-semibold tracking-wide"
             variants={itemVariants}
           >
-            <motion.button
-              className="bg-white/10 backdrop-blur-sm border border-white/20 text-white py-4 px-12 rounded-lg font-semibold text-lg transition-all duration-300"
-              type="submit"
-              variants={buttonVariants}
-              whileHover="hover"
-              whileTap="tap"
-            >
-              Send Message
-            </motion.button>
-          </motion.div>
+            {state.submitting ? "Sending..." : "Send Message"}
+          </motion.button>
         </motion.form>
-      </div>
-    </motion.section>
+      </motion.div>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={1800}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnHover
+        theme="dark"
+      />
+    </section>
   );
 };
 

@@ -10,9 +10,9 @@ const Hero = () => {
       opacity: 1,
       transition: {
         delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants = {
@@ -22,9 +22,9 @@ const Hero = () => {
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   const buttonVariants = {
@@ -36,19 +36,19 @@ const Hero = () => {
         type: "spring",
         stiffness: 300,
         damping: 20,
-        duration: 0.6
-      }
+        duration: 0.6,
+      },
     },
     hover: {
       scale: 1.05,
       backgroundColor: "#f8fafc",
       transition: {
-        duration: 0.2
-      }
+        duration: 0.2,
+      },
     },
     tap: {
-      scale: 0.95
-    }
+      scale: 0.95,
+    },
   };
 
   const galaxyVariants = {
@@ -57,13 +57,16 @@ const Hero = () => {
       opacity: 1,
       transition: {
         duration: 1.5,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   return (
-    <div className="w-full h-screen relative top-0 left-0 overflow-hidden" id="home">
+    <div
+      className="w-full h-screen relative top-0 left-0 overflow-hidden"
+      id="home"
+    >
       {/* Animated Gradient Background */}
       <motion.div
         variants={galaxyVariants}
@@ -88,15 +91,12 @@ const Hero = () => {
         initial="hidden"
         animate="visible"
       >
-        <motion.h1
-          className="text-5xl font-bold mb-6"
-          variants={itemVariants}
-        >
+        <motion.h1 className="text-7xl font-bold mb-6 bbh-sans-bogle-regular" variants={itemVariants}>
           Crafting the Web, One Pixel at a Time
         </motion.h1>
-        
+
         <motion.p
-          className="text-xl mb-8 leading-relaxed"
+          className="text-xl mb-8 leading-relaxed font-serif"
           variants={itemVariants}
         >
           Hi, I'm Aziz — a junior front-end developer passionate about building
@@ -107,23 +107,59 @@ const Hero = () => {
           className="flex justify-center items-center gap-4 flex-wrap"
           variants={itemVariants}
         >
-          <motion.button
-            className="bg-white py-3 px-8 text-violet-700 font-semibold rounded-full shadow-lg"
-            variants={buttonVariants}
+          <motion.a
+            className="bg-white/10 backdrop-blur-sm border border-white/20 text-white py-4 px-12 rounded-full font-semibold text-lg transition-all duration-300"
+            variants={{
+              hover: {
+                scale: 1.05,
+                backgroundColor: "rgba(255, 255, 255, 0.2)",
+                borderColor: "rgba(255, 255, 255, 0.4)",
+                boxShadow: "0 8px 25px rgba(255, 255, 255, 0.15)",
+                transition: {
+                  duration: 0.3,
+                },
+              },
+              tap: {
+                scale: 0.95,
+                backgroundColor: "rgba(255, 255, 255, 0.15)",
+                transition: {
+                  duration: 0.1,
+                },
+              },
+            }}
             whileHover="hover"
             whileTap="tap"
+            href="#projects"
           >
             Projects
-          </motion.button>
-          
-          <motion.button
-            className="bg-white py-3 px-8 text-violet-700 font-semibold rounded-full shadow-lg"
-            variants={buttonVariants}
+          </motion.a>
+
+          <motion.a
+            className="bg-white/10 backdrop-blur-sm border border-white/20 text-white py-4 px-12 rounded-full font-semibold text-lg transition-all duration-300"
+            variants={{
+              hover: {
+                scale: 1.05,
+                backgroundColor: "rgba(255, 255, 255, 0.2)",
+                borderColor: "rgba(255, 255, 255, 0.4)",
+                boxShadow: "0 8px 25px rgba(255, 255, 255, 0.15)",
+                transition: {
+                  duration: 0.3,
+                },
+              },
+              tap: {
+                scale: 0.95,
+                backgroundColor: "rgba(255, 255, 255, 0.15)",
+                transition: {
+                  duration: 0.1,
+                },
+              },
+            }}
             whileHover="hover"
             whileTap="tap"
+            href="#contact"
           >
             Contact
-          </motion.button>
+          </motion.a>
         </motion.div>
       </motion.div>
 

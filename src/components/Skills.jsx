@@ -29,7 +29,7 @@ const Skills = () => {
     {
       node: <SiNextdotjs size={60} color="white" />,
       title: "TypeScript",
-      href: "https://www.typescriptlang.org",
+      href: "https://nextjs.org/",
     },
     {
       node: <SiTailwindcss size={60} color="white" />,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { Github, Linkedin, Twitter} from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Footer = () => {
@@ -8,18 +8,18 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: Github,
-      href: "https://github.com",
+      href: "https://github.com/Aziz-Rabya",
       label: "GitHub"
     },
     {
       icon: Linkedin,
-      href: "https://linkedin.com",
+      href: "https://www.linkedin.com/in/aziz-rabya-2a77a6375/",
       label: "LinkedIn"
     },
     {
-      icon: Mail,
-      href: "mailto:contact@example.com",
-      label: "Email"
+      icon: Twitter,
+      href: "https://x.com/JESSE__2020",
+      label: "Twitter"
     }
   ];
 
@@ -36,7 +36,7 @@ const Footer = () => {
           <h3 className="text-2xl font-bold text-white">
             Rabya Aziz
           </h3>
-          <p className="text-slate-400 mt-1 text-sm md:text-base">Frontend Developer !</p>
+          <p className="text-slate-400 mt-1 text-sm md:text-base">Web Developer !</p>
         </motion.div>
 
         <motion.div 
@@ -68,7 +68,7 @@ const Footer = () => {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
         viewport={{ once: true }}
-        className="mt-10 md:mt-12 text-center text-slate-500"
+        className="mt-2 md:mt-12 text-center text-slate-500"
       >
         <p className="flex justify-center items-center gap-2 text-xs md:text-sm">
           Made
