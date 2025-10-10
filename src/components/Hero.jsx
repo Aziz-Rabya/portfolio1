@@ -68,13 +68,13 @@ const Hero = () => {
 
       <div
         ref={contentRef}
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-10 w-full max-w-4xl px-4"
+        className="absolute top-69 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-10 w-full max-w-4xl px-2"
       >
         <h1 ref={headingRef} className="text-7xl font-bold mb-6 bbh-sans-bogle-regular">
           Crafting the Web, One Pixel at a Time
         </h1>
 
-        <p ref={textRef} className="text-xl mb-8 leading-relaxed font-serif">
+        <p ref={textRef} className="text-xl mb-6 leading-relaxed font-serif">
           Hi, I'm Aziz — a junior front-end developer passionate about building
           smooth, responsive, and user-friendly websites.
         </p>
