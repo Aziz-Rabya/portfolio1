@@ -1,74 +1,45 @@
 import React from "react";
-import { motion } from "framer-motion";
 import MagicBento from './MagicBento';
 
 const About = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.8, ease: "easeOut" }
-    }
-  };
-
   return (
-    <motion.section 
+    <section 
       className="flex flex-col gap-10 m-4 p-3"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
-      variants={containerVariants}
       id="about"
     >
-      <motion.div variants={itemVariants}>
-        <motion.h4 className="text-gray-400" variants={itemVariants}>
+      <div>
+        <h4 className="text-gray-400">
           Introduction
-        </motion.h4>
+        </h4>
         
-        <motion.h1 className="text-white text-5xl font-extrabold" variants={itemVariants}>
+        <h1 className="text-white text-5xl font-extrabold">
           OVERVIEW.
-        </motion.h1>
+        </h1>
         
-        <motion.p className="text-white max-w-3xl text-2xl leading-7 font-serif mt-9" variants={itemVariants}>
+        <p className="text-white max-w-3xl text-2xl leading-7 font-serif mt-9">
           I'm a skilled software developer with experience in JavaScript, 
           and expertise in frameworks like React, Next.js, and
           Tailwind css. I'm a quick learner and collaborate closely with clients to
           create efficient, scalable, and user-friendly solutions that solve
           real-world problems. Let's work together to bring your ideas to life!
-        </motion.p>
-      </motion.div>
+        </p>
+      </div>
 
-      <motion.div
-        variants={itemVariants}
-        whileHover={{ scale: 1.02 }}
-        transition={{ duration: 0.3 }}
-      >
+      <div>
         <MagicBento
           textAutoHide={true}
           enableStars={true}
           enableSpotlight={true}
           enableBorderGlow={true}
-          enableTilt={true}
-          enableMagnetism={true}
-          clickEffect={true}
+          enableTilt={false}
+          enableMagnetism={false}
+          clickEffect={false}
           spotlightRadius={300}
           particleCount={12}
           glowColor="255, 255, 255"
         />
-      </motion.div>
-    </motion.section>
+      </div>
+    </section>
   );
 };
 

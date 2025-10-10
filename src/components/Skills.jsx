@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import LogoLoop from "./LogoLoop";
 import {
   SiReact,
@@ -27,42 +26,21 @@ const Skills = () => {
     { node: <SiSupabase size={60} color="white" />, href: "https://supabase.com/" },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { delayChildren: 0.3, staggerChildren: 0.2 }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.8, ease: "easeOut" }
-    }
-  };
-
   return (
-    <motion.section 
+    <section 
       className="flex flex-col mt-10 p-5"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
-      variants={containerVariants}
       id="skills"
     >
-      <motion.div className="m-5 p-2" variants={itemVariants}>
-        <motion.h4 className="text-gray-400" variants={itemVariants}>
+      <div className="m-5 p-2">
+        <h4 className="text-gray-400">
           Technologies and 
-        </motion.h4>
-        <motion.h1 className="text-white text-5xl font-extrabold" variants={itemVariants}>
+        </h4>
+        <h1 className="text-white text-5xl font-extrabold">
           SKILLS.
-        </motion.h1>
-      </motion.div>
+        </h1>
+      </div>
 
-      <motion.div
+      <div
         style={{
           height: "200px",
           position: "relative",
@@ -70,7 +48,6 @@ const Skills = () => {
           marginTop: "70px",
           backgroundColor: "#000000",
         }}
-        variants={itemVariants}
       >
         <LogoLoop
           logos={techLogos}
@@ -78,14 +55,14 @@ const Skills = () => {
           direction="left"
           logoHeight={60}
           gap={80}
-          pauseOnHover={true}
-          scaleOnHover={true}
+          pauseOnHover={false}
+          scaleOnHover={false}
           fadeOut={true}
           fadeOutColor="#000000"
           ariaLabel="Technology partners"
         />
-      </motion.div>
-    </motion.section>
+      </div>
+    </section>
   );
 };
 
