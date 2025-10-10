@@ -70,7 +70,7 @@ const Hero = () => {
         ref={contentRef}
         className="absolute top-69 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-10 w-full max-w-4xl px-2"
       >
-        <h1 ref={headingRef} className="text-7xl font-bold mb-6 bbh-sans-bogle-regular">
+        <h1 ref={headingRef} className="text-6xl font-bold mb-6 font-sans-serif leading-tight tracking-tight">
           Crafting the Web, One Pixel at a Time
         </h1>
 
