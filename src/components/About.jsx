@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import MagicBento from './MagicBento';
 
 const About = () => {
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -20,47 +19,7 @@ const About = () => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const bentoVariants = {
-    hidden: { scale: 0.8, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        duration: 1,
-        ease: "easeOut",
-        delay: 0.5
-      }
-    }
-  };
-
-  const textVariants = {
-    hidden: { x: -50, opacity: 0 },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const titleVariants = {
-    hidden: { y: -20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
+      transition: { duration: 0.8, ease: "easeOut" }
     }
   };
 
@@ -74,24 +33,15 @@ const About = () => {
       id="about"
     >
       <motion.div variants={itemVariants}>
-        <motion.h4 
-          className="text-gray-400"
-          variants={titleVariants}
-        >
+        <motion.h4 className="text-gray-400" variants={itemVariants}>
           Introduction
         </motion.h4>
         
-        <motion.h1 
-          className="text-white text-5xl font-extrabold"
-          variants={titleVariants}
-        >
+        <motion.h1 className="text-white text-5xl font-extrabold" variants={itemVariants}>
           OVERVIEW.
         </motion.h1>
         
-        <motion.p 
-          className="text-white max-w-3xl text-2xl leading-7 font-serif mt-9"
-          variants={textVariants}
-        >
+        <motion.p className="text-white max-w-3xl text-2xl leading-7 font-serif mt-9" variants={itemVariants}>
           I'm a skilled software developer with experience in JavaScript, 
           and expertise in frameworks like React, Next.js, and
           Tailwind css. I'm a quick learner and collaborate closely with clients to
@@ -101,11 +51,9 @@ const About = () => {
       </motion.div>
 
       <motion.div
-        variants={bentoVariants}
-        whileHover={{ 
-          scale: 1.02,
-          transition: { duration: 0.3 }
-        }}
+        variants={itemVariants}
+        whileHover={{ scale: 1.02 }}
+        transition={{ duration: 0.3 }}
       >
         <MagicBento
           textAutoHide={true}

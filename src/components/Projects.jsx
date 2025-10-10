@@ -156,10 +156,7 @@ const ParticleCard = ({
 
       gsap.fromTo(
         ripple,
-        {
-          scale: 0,
-          opacity: 1
-        },
+        { scale: 0, opacity: 1 },
         {
           scale: 1,
           opacity: 0,
@@ -190,15 +187,8 @@ const ParticleCard = ({
       initial={{ opacity: 0, y: 50, scale: 0.8 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{
-        duration: 0.6,
-        ease: "easeOut",
-        delay: index * 0.1
-      }}
-      whileHover={{
-        y: -10,
-        transition: { duration: 0.3 }
-      }}
+      transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
+      whileHover={{ y: -10, transition: { duration: 0.3 } }}
     >
       {children}
     </motion.div>
@@ -222,15 +212,11 @@ const Projects = () => {
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = isMobile;
 
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
+      transition: { delayChildren: 0.3, staggerChildren: 0.2 }
     }
   };
 
@@ -239,22 +225,7 @@ const Projects = () => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const titleVariants = {
-    hidden: { x: -50, opacity: 0 },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.7,
-        ease: "easeOut"
-      }
+      transition: { duration: 0.8, ease: "easeOut" }
     }
   };
 
@@ -268,24 +239,15 @@ const Projects = () => {
       id="projects"
     >
       <motion.div variants={itemVariants}>
-        <motion.h4 
-          className="text-gray-400"
-          variants={titleVariants}
-        >
+        <motion.h4 className="text-gray-400" variants={itemVariants}>
           Featured
         </motion.h4>
-        <motion.h1 
-          className="text-white text-5xl font-extrabold"
-          variants={titleVariants}
-        >
+        <motion.h1 className="text-white text-5xl font-extrabold" variants={itemVariants}>
           PROJECTS.
         </motion.h1>
       </motion.div>
       
-      <motion.div 
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        variants={containerVariants}
-      >
+      <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" variants={containerVariants}>
         {ProjectsList.map((project, index) => (
           <ParticleCard
             key={index}
@@ -305,17 +267,9 @@ const Projects = () => {
             >
               <motion.div 
                 className="p-6 bg-transparent rounded-lg h-full flex flex-col"
-                whileHover={{ 
-                  scale: 1.02,
-                  transition: { duration: 0.3 }
-                }}
+                whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
               >
-                {/* Project Image */}
-                <motion.div 
-                  className="mb-5 overflow-hidden rounded-lg"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.4 }}
-                >
+                <motion.div className="mb-5 overflow-hidden rounded-lg" whileHover={{ scale: 1.05 }} transition={{ duration: 0.4 }}>
                   <img 
                     src={project.image1} 
                     alt={project.title}
@@ -323,37 +277,20 @@ const Projects = () => {
                   />
                 </motion.div>
                 
-                {/* Project Title */}
-                <motion.h3 
-                  className="text-white text-xl font-bold mb-2 group-hover:text-gray-200 transition-colors"
-                  whileHover={{ x: 5 }}
-                  transition={{ duration: 0.2 }}
-                >
+                <motion.h3 className="text-white text-xl font-bold mb-2 group-hover:text-gray-200 transition-colors" whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
                   {project.title}
                 </motion.h3>
                 
-                {/* Project Description */}
-                <motion.p 
-                  className="text-gray-300 mb-4 flex-grow group-hover:text-white transition-colors"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                >
+                <motion.p className="text-gray-300 mb-4 flex-grow group-hover:text-white transition-colors" whileHover={{ scale: 1.02 }} transition={{ duration: 0.3 }}>
                   {project.description}
                 </motion.p>
                 
-                {/* Tags */}
-                <motion.div 
-                  className="flex flex-wrap gap-2 mb-4"
-                  variants={containerVariants}
-                >
+                <motion.div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, tagIndex) => (
                     <motion.span 
                       key={tagIndex}
                       className="px-3 py-1 bg-gray-600 text-white text-sm rounded-full group-hover:bg-gray-500 transition-colors"
-                      whileHover={{ 
-                        scale: 1.1,
-                        backgroundColor: "#4B5563"
-                      }}
+                      whileHover={{ scale: 1.1, backgroundColor: "#4B5563" }}
                       transition={{ duration: 0.2 }}
                     >
                       {tag}
@@ -361,21 +298,14 @@ const Projects = () => {
                   ))}
                 </motion.div>
                 
-                {/* Links */}
-                <motion.div 
-                  className="flex gap-3 mt-auto"
-                  variants={containerVariants}
-                >
+                <motion.div className="flex gap-3 mt-auto">
                   {project.source_code_link && (
                     <motion.a 
                       href={project.source_code_link}
                       className="flex items-center justify-center gap-2 flex-1 bg-transparent border border-white hover:bg-white/10 text-white py-2 px-4 rounded-lg transition-all duration-300 font-medium"
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ 
-                        scale: 1.05,
-                        backgroundColor: "rgba(255, 255, 255, 0.1)"
-                      }}
+                      whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
                       whileTap={{ scale: 0.95 }}
                     >
                       <span>Code</span>
@@ -387,10 +317,7 @@ const Projects = () => {
                       className="flex items-center justify-center gap-2 flex-1 bg-transparent border border-white hover:bg-white/10 text-white py-2 px-4 rounded-lg transition-all duration-300 font-medium"
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ 
-                        scale: 1.05,
-                        backgroundColor: "rgba(255, 255, 255, 0.1)"
-                      }}
+                      whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
                       whileTap={{ scale: 0.95 }}
                     >
                       <span>Demo</span>
@@ -402,37 +329,6 @@ const Projects = () => {
           </ParticleCard>
         ))}
       </motion.div>
-
-      <style>
-        {`
-          .project-card {
-            --glow-x: 50%;
-            --glow-y: 50%;
-            --glow-intensity: 0;
-            --glow-radius: 200px;
-            --glow-color: ${DEFAULT_GLOW_COLOR};
-          }
-
-          .project-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            padding: 2px;
-            background: radial-gradient(var(--glow-radius) circle at var(--glow-x) var(--glow-y),
-                rgba(${DEFAULT_GLOW_COLOR}, calc(var(--glow-intensity) * 0.8)) 0%,
-                rgba(${DEFAULT_GLOW_COLOR}, calc(var(--glow-intensity) * 0.4)) 30%,
-                transparent 60%);
-            border-radius: inherit;
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask-composite: subtract;
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            z-index: 1;
-          }
-        `}
-      </style>
     </motion.section>
   );
 };

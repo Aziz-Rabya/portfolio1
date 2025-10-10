@@ -33,9 +33,7 @@ const Footer = () => {
           viewport={{ once: true }}
           className="text-center md:text-left"
         >
-          <h3 className="text-2xl font-bold text-white">
-            Rabya Aziz
-          </h3>
+          <h3 className="text-2xl font-bold text-white">Rabya Aziz</h3>
           <p className="text-slate-400 mt-1 text-sm md:text-base">Web Developer !</p>
         </motion.div>
 
@@ -71,8 +69,7 @@ const Footer = () => {
         className="mt-2 md:mt-12 text-center text-slate-500"
       >
         <p className="flex justify-center items-center gap-2 text-xs md:text-sm">
-          Made
-          by Rabya Aziz © {currentYear}
+          Made by Rabya Aziz © {currentYear}
         </p>
       </motion.div>
     </footer>

@@ -3,7 +3,6 @@ import LogoLoop from "./LogoLoop";
 import {
   SiReact,
   SiNextdotjs,
-  SiTypescript,
   SiTailwindcss,
   SiHtml5,
   SiCss3,
@@ -16,67 +15,23 @@ import {
 
 const Skills = () => {
   const techLogos = [
-    {
-      node: <SiReact size={60} color="white" />,
-      title: "React",
-      href: "https://react.dev",
-    },
-    {
-      node: <SiHtml5 size={60} color="white" />,
-      title: "Next.js",
-      href: "https://en.wikipedia.org/wiki/HTML5",
-    },
-    {
-      node: <SiNextdotjs size={60} color="white" />,
-      title: "TypeScript",
-      href: "https://nextjs.org/",
-    },
-    {
-      node: <SiTailwindcss size={60} color="white" />,
-      title: "Tailwind CSS",
-      href: "https://tailwindcss.com",
-    },
-    {
-      node: <SiCss3 size={60} color="white" />,
-      title: "Next.js",
-      href: "https://www.css3.info/",
-    },
-    {
-      node: <SiMongodb size={60} color="white" />,
-      title: "Next.js",
-      href: "https://www.mongodb.com/",
-    },
-    {
-      node: <SiGithub size={60} color="white" />,
-      title: "Next.js",
-      href: "https://github.com/",
-    },
-    {
-      node: <SiGit size={60} color="white" />,
-      title: "Next.js",
-      href: "https://git-scm.com/",
-    },
-    {
-      node: <SiPython size={60} color="white" />,
-      title: "Next.js",
-      href: "https://www.python.org/",
-    },
-    {
-      node: <SiSupabase size={60} color="white" />,
-      title: "Next.js",
-      href: "https://supabase.com/",
-    },
+    { node: <SiReact size={60} color="white" />, href: "https://react.dev" },
+    { node: <SiHtml5 size={60} color="white" />, href: "https://en.wikipedia.org/wiki/HTML5" },
+    { node: <SiNextdotjs size={60} color="white" />, href: "https://nextjs.org/" },
+    { node: <SiTailwindcss size={60} color="white" />, href: "https://tailwindcss.com" },
+    { node: <SiCss3 size={60} color="white" />, href: "https://www.css3.info/" },
+    { node: <SiMongodb size={60} color="white" />, href: "https://www.mongodb.com/" },
+    { node: <SiGithub size={60} color="white" />, href: "https://github.com/" },
+    { node: <SiGit size={60} color="white" />, href: "https://git-scm.com/" },
+    { node: <SiPython size={60} color="white" />, href: "https://www.python.org/" },
+    { node: <SiSupabase size={60} color="white" />, href: "https://supabase.com/" },
   ];
 
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
+      transition: { delayChildren: 0.3, staggerChildren: 0.2 }
     }
   };
 
@@ -85,35 +40,7 @@ const Skills = () => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const titleVariants = {
-    hidden: { x: -50, opacity: 0 },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.7,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const logoContainerVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 1,
-        ease: "easeOut",
-        delay: 0.5
-      }
+      transition: { duration: 0.8, ease: "easeOut" }
     }
   };
 
@@ -126,20 +53,11 @@ const Skills = () => {
       variants={containerVariants}
       id="skills"
     >
-      <motion.div 
-        className="m-5 p-2"
-        variants={itemVariants}
-      >
-        <motion.h4 
-          className="text-gray-400"
-          variants={titleVariants}
-        >
+      <motion.div className="m-5 p-2" variants={itemVariants}>
+        <motion.h4 className="text-gray-400" variants={itemVariants}>
           Technologies and 
         </motion.h4>
-        <motion.h1 
-          className="text-white text-5xl font-extrabold"
-          variants={titleVariants}
-        >
+        <motion.h1 className="text-white text-5xl font-extrabold" variants={itemVariants}>
           SKILLS.
         </motion.h1>
       </motion.div>
@@ -152,7 +70,7 @@ const Skills = () => {
           marginTop: "70px",
           backgroundColor: "#000000",
         }}
-        variants={logoContainerVariants}
+        variants={itemVariants}
       >
         <LogoLoop
           logos={techLogos}
