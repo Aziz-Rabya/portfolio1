@@ -11,21 +11,21 @@ const cardData = [
   { 
     title: "WEB DEVELOPER", 
     color: '#0000', 
-    image: "/images/web.png",
+    image: "https://res.cloudinary.com/defwlou35/image/upload/v1760121716/web_smtlop.png",
     label: "Full-Stack",
     description: "Creating dynamic web applications with modern technologies, clean code architecture, and scalable infrastructure."
   },
   { 
     title: "SCRIPTS WRITER", 
     color: '#0000', 
-    image: "/images/backend.png",
+    image: "https://res.cloudinary.com/defwlou35/image/upload/v1760121712/backend_kzgdhn.png",
     label: "Automation",
     description: "Automating repetitive tasks and processes to boost efficiency, reduce errors, and accelerate development cycles."
   },
   { 
     title: "FRONTEND DEVELOPER", 
     color: '#0000', 
-    image: "/images/mobile.png",
+    image: "https://res.cloudinary.com/defwlou35/image/upload/v1760121715/mobile_cxs7wh.png",
     label: "UI/UX",
     description: "Building engaging, responsive interfaces that provide seamless user experiences across all devices and platforms."
   }
