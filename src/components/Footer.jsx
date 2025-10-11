@@ -24,7 +24,7 @@ const Footer = () => {
     },
     {
       icon: Twitter,
-      href: "https://x.com/JESSE__2020",
+      href: "https://x.com/AZ__IZ2020",
       label: "Twitter"
     },
     {
