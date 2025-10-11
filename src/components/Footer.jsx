@@ -2,6 +2,7 @@
 import React, { useRef, useEffect } from 'react';
 import { Github, Linkedin, Twitter} from 'lucide-react';
 import { gsap } from "gsap";
+import { BsReddit } from 'react-icons/bs';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -25,6 +26,11 @@ const Footer = () => {
       icon: Twitter,
       href: "https://x.com/JESSE__2020",
       label: "Twitter"
+    },
+    {
+      icon: BsReddit,
+      href: "https://www.reddit.com/user/phoenix___1991/",
+      label: "Reddit"
     }
   ];
 
